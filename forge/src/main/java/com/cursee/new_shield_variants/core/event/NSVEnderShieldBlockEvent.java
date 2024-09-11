@@ -63,14 +63,16 @@ public class NSVEnderShieldBlockEvent {
 //        NewShieldVariants.LOGGER.info("\n event.getEntity getDisplayName: \n" + event.getEntity().getDisplayName().toString()); // contains Dev
 //        NewShieldVariants.LOGGER.info("\n event.getDamageSource getEntity getDisplayName: \n" + event.getDamageSource().getEntity().getDisplayName().toString());
 
-        LivingEntity blockingEntity = event.getEntity();
-        LivingEntity attackingEntity = (LivingEntity) event.getDamageSource().getEntity();
+        if (event.getDamageSource().getEntity() instanceof LivingEntity) {
+            LivingEntity blockingEntity = event.getEntity();
+            LivingEntity attackingEntity = (LivingEntity) event.getDamageSource().getEntity();
 
-        if (blockingEntity instanceof Player player && attackingEntity != null) {
-            if (player.getMainHandItem().getItem() == GlobalRegistry.ENDER_SHIELD.get() || player.getOffhandItem().getItem() == GlobalRegistry.ENDER_SHIELD.get()) {
+            if (blockingEntity instanceof Player player && attackingEntity != null) {
+                if (player.getMainHandItem().getItem() == GlobalRegistry.ENDER_SHIELD.get() || player.getOffhandItem().getItem() == GlobalRegistry.ENDER_SHIELD.get()) {
 //                attackingEntity.randomTeleport(10, 2, 10, false);
-                randomTeleport(attackingEntity);
-                event.shieldTakesDamage();
+                    randomTeleport(attackingEntity);
+                    event.shieldTakesDamage();
+                }
             }
         }
 

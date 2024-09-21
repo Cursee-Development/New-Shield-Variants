@@ -1,6 +1,0 @@
-{
-  "parent": "fabricshieldlib:item/fabric_shield_blocking",
-  "textures":{
-    "shield":"new_shield_variants:item/stone_shield"
-  }
-}

@@ -76,6 +76,9 @@ subprojects {
                 includeGroup "curse.maven"
             }
         }
+        maven {url = 'https://jitpack.io'}
+        maven {url "https://maven.terraformersmc.com/releases/"}
+        maven {url = "https://api.modrinth.com/maven"}
     }
 
     tasks.withType(JavaCompile).configureEach {

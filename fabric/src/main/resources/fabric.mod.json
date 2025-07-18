@@ -16,10 +16,10 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "com.cursee.examplemod.ExampleModFabric"
+            "com.cursee.new_shield_variants.NewShieldVariantsFabric"
         ],
         "client": [
-            "com.cursee.examplemod.ExampleModClientFabric"
+            "com.cursee.new_shield_variants.NewShieldVariantsClientFabric"
         ]
     },
     "mixins": [

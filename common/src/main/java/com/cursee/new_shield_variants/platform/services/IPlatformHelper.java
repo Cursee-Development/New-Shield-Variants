@@ -1,5 +1,9 @@
 package com.cursee.new_shield_variants.platform.services;
 
+import net.minecraft.world.item.CreativeModeTab;
+
+import java.security.cert.CertPathBuilder;
+
 public interface IPlatformHelper {
 
     /**
@@ -47,4 +51,6 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    CreativeModeTab.Builder tabBuilder();
 }

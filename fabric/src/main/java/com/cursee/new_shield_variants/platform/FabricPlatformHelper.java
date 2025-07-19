@@ -2,7 +2,9 @@ package com.cursee.new_shield_variants.platform;
 
 import com.cursee.new_shield_variants.platform.services.IPlatformHelper;
 import net.fabricmc.api.EnvType;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.world.item.CreativeModeTab;
 
 public class FabricPlatformHelper implements IPlatformHelper {
 
@@ -34,5 +36,10 @@ public class FabricPlatformHelper implements IPlatformHelper {
     public boolean isClientSide() {
 
         return FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT;
+    }
+
+    @Override
+    public CreativeModeTab.Builder tabBuilder() {
+        return FabricItemGroup.builder();
     }
 }

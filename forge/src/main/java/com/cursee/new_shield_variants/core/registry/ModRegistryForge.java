@@ -16,6 +16,7 @@ public class ModRegistryForge {
     public static void register(final IEventBus modEventBus) {
         bind(Registries.BLOCK, ModBlocks::register);
         bind(Registries.ITEM, ModItems::register);
+        bind(Registries.CREATIVE_MODE_TAB, ModTabs::register);
     }
 
     private static <T> void bind(ResourceKey<Registry<T>> registry, Consumer<BiConsumer<T, ResourceLocation>> source) {

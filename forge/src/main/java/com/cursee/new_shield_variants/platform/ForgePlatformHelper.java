@@ -1,6 +1,7 @@
 package com.cursee.new_shield_variants.platform;
 
 import com.cursee.new_shield_variants.platform.services.IPlatformHelper;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLEnvironment;
@@ -37,5 +38,10 @@ public class ForgePlatformHelper implements IPlatformHelper {
     public boolean isClientSide() {
 
         return FMLEnvironment.dist == Dist.CLIENT;
+    }
+
+    @Override
+    public CreativeModeTab.Builder tabBuilder() {
+        return CreativeModeTab.builder();
     }
 }

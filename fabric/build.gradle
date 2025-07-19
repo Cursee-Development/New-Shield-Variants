@@ -2,6 +2,13 @@ plugins {
     id 'multiloader-loader'
     id 'fabric-loom'
 }
+
+repositories {
+    maven {url = 'https://jitpack.io'}
+    maven {url "https://maven.terraformersmc.com/releases/"}
+    maven {url = "https://api.modrinth.com/maven"}
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.layered {
@@ -14,6 +21,10 @@ dependencies {
     implementation project(":common")
 
     modImplementation "curse.maven:modmenu-308702:5162837"
+
+    modImplementation "com.github.StellarWind22:Fabric-Shield-Lib:v1.7.2-1.20.1"
+    modImplementation "maven.modrinth:midnightlib:1.4.1-fabric"
+    modImplementation "com.github.Chocohead:Fabric-ASM:v2.3"
 
     modImplementation "curse.maven:monolib-968432:6544054"
 }

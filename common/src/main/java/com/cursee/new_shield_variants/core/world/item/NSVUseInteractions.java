@@ -1,16 +1,15 @@
 package com.cursee.new_shield_variants.core.world.item;
 
-import com.cursee.new_shield_variants.core.world.entity.projectile.ThrownTNT;
+import com.cursee.new_shield_variants.core.world.entity.projectile.ThrownFireChargeFabric;
+import com.cursee.new_shield_variants.core.world.entity.projectile.ThrownTNTFabric;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AreaEffectCloud;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -45,8 +44,11 @@ public class NSVUseInteractions {
             else if (entity.canAttack(player)) ignites = true;
             else if (entity.attackable() && (entity instanceof Player other && other.getTeam() != player.getTeam())) ignites = true;
 
+            // make sure we don't ignite ourselves...
+            if (entity == player) ignites = false;
+
             if (ignites) {
-                entity.setSecondsOnFire(4 * 20);
+                entity.setSecondsOnFire(2 * 20);
                 ignited.set(true);
             }
         });
@@ -101,10 +103,16 @@ public class NSVUseInteractions {
 //            thrownegg.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
 //            level.addFreshEntity(thrownegg);
 
-            LargeFireball largefireball = new LargeFireball(EntityType.FIREBALL, level);
-            largefireball.setItem(Items.FIRE_CHARGE.getDefaultInstance());
-            largefireball.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
-            level.addFreshEntity(largefireball);
+            // LargeFireball fireball = new LargeFireball(EntityType.FIREBALL, level);
+//            SmallFireball fireball = new SmallFireball(level, player, player.getX(), player.getY() + 1, player.getZ());
+//            fireball.setItem(Items.FIRE_CHARGE.getDefaultInstance());
+//            fireball.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+//            level.addFreshEntity(fireball);
+
+            ThrownFireChargeFabric throwntnt = new ThrownFireChargeFabric(level, player);
+            throwntnt.setItem(Items.FIRE_CHARGE.getDefaultInstance());
+            throwntnt.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+            level.addFreshEntity(throwntnt);
         }
         itemstack.setDamageValue(itemstack.getDamageValue() - 20);
 
@@ -115,9 +123,15 @@ public class NSVUseInteractions {
         ItemStack itemstack = player.getItemInHand(hand);
 
         if (!level.isClientSide) {
-            ThrownTNT tnt = new ThrownTNT(level, player);
-            tnt.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0f, 1.5f, 1.0f);
-            level.addFreshEntity(tnt);
+//            ThrownTNT tnt = new ThrownTNT(player, level);
+//            // tnt.setItem(Items.TNT.getDefaultInstance());
+//            tnt.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0f, 1.5f, 1.0f);
+//            level.addFreshEntity(tnt);
+
+            ThrownTNTFabric throwntnt = new ThrownTNTFabric(level, player);
+            throwntnt.setItem(Items.TNT.getDefaultInstance());
+            throwntnt.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+            level.addFreshEntity(throwntnt);
         }
 
         itemstack.setDamageValue(itemstack.getDamageValue() - 20);

@@ -1,5 +1,8 @@
 package com.cursee.new_shield_variants.platform.services;
 
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 
 import java.security.cert.CertPathBuilder;
@@ -53,4 +56,6 @@ public interface IPlatformHelper {
     }
 
     CreativeModeTab.Builder tabBuilder();
+
+    <T extends Entity> void registerEntityRenderer(EntityType<T> entityType, EntityRendererProvider<T> func);
 }

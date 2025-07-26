@@ -14,6 +14,7 @@ public class ModRegistryFabric {
         ModBlocks.register(bind(BuiltInRegistries.BLOCK));
         ModItems.register(bind(BuiltInRegistries.ITEM));
         ModTabs.register(bind(BuiltInRegistries.CREATIVE_MODE_TAB));
+        ModEntities.register(bind(BuiltInRegistries.ENTITY_TYPE));
     }
 
     private static <T> BiConsumer<T, ResourceLocation> bind(Registry<? super T> registry) {

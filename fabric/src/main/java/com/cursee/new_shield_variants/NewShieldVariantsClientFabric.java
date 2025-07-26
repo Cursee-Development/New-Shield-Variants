@@ -6,6 +6,6 @@ public class NewShieldVariantsClientFabric implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-
+        NewShieldVariantsClient.init();
     }
 }

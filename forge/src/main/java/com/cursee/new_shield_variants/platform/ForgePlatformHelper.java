@@ -1,6 +1,10 @@
 package com.cursee.new_shield_variants.platform;
 
 import com.cursee.new_shield_variants.platform.services.IPlatformHelper;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.ModList;
@@ -43,5 +47,9 @@ public class ForgePlatformHelper implements IPlatformHelper {
     @Override
     public CreativeModeTab.Builder tabBuilder() {
         return CreativeModeTab.builder();
+    }
+
+    public <T extends Entity> void registerEntityRenderer(EntityType<T> entityType, EntityRendererProvider<T> func) {
+        EntityRenderers.register(entityType, func);
     }
 }

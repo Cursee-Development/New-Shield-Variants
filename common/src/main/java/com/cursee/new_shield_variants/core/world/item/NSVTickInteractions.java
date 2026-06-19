@@ -54,6 +54,8 @@ public class NSVTickInteractions {
             if (targetForTeleportation != null && randomTeleport(targetForTeleportation)) {
                 player.stopUsingItem();
                 player.setLastHurtByMob(null);
+
+                player.getCooldowns().addCooldown(player.getItemInHand(player.getUsedItemHand()).getItem(), 60);
             }
         }
     }

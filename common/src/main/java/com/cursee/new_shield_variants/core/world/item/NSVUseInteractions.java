@@ -48,7 +48,7 @@ public class NSVUseInteractions {
             if (entity == player) ignites = false;
 
             if (ignites) {
-                entity.setSecondsOnFire(2 * 20);
+                if (!entity.isOnFire()) entity.setSecondsOnFire(2);
                 ignited.set(true);
             }
         });
